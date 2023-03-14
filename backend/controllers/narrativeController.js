@@ -12,7 +12,7 @@ const getNarratives = async (req, res) => {
 
 // get a single narrative
 const getNarrative = async (req, res) => {
-    const {id} = req.params //Use descructuring to grab which is changeable. We are grabbing the id property from the route parameters
+    const { id } = req.params //Use descructuring to grab which is changeable. We are grabbing the id property from the route parameters
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({error: 'No such narrative'})
@@ -40,12 +40,46 @@ const createNarrative = async (req, res) => {
     }
 }
 
-// delete a narrative
+// delete a narrative 
+const deleteNarrative = async (req, res) => {
+    const { id } = req.params; //(need to grab id from the route parameter; we get it from request object)
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such narrative'})
+    }
+
+    const narrative = await Narrative.findOneAndDelete({_id: id}) //inside the argument, we pass an object. What parameter we want to based this find on? Our object has id parameter - we have the id above however in mongodb it is _id (property name). Therefore we code it to find the doc and delete where the _id is equal to the id we have. This returns a response (doc deleted)
+
+    // check if we have the narrative
+    if (!narrative) {
+        return res.status(400).json({error: 'No such narrative'})
+    }
+    res.status(200).json(narrative);
+};
 
 // update a narrative
+const updateNarrative = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such narrative'})
+    }
+
+    const narrative = await Narrative.findOneAndUpdate({_id: id}, {
+        ...req.body
+    }) //second argument is what we want to update. To get the properties that we send on the body is by using the request.body which would look like an object with those properties. Therefore we get it by req.body and spread the properties ...
+
+    if (!narrative) {
+        return res.status(400).json({error: 'No such narrative'})
+    }
+
+    res.status(200).json(narrative)
+}
 
 module.exports = {
     getNarratives,
     getNarrative,
-    createNarrative
+    createNarrative,
+    deleteNarrative,
+    updateNarrative
 }

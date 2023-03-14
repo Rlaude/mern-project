@@ -6,6 +6,8 @@ const {
     createNarrative,
     getNarratives,
     getNarrative,
+    deleteNarrative,
+    updateNarrative
 } = require('../controllers/narrativeController')
 
 const router = express.Router(); //we invoke the Router(), this creates an instance for the router, next we attach a handler - see below
@@ -20,13 +22,9 @@ router.get('/:id', getNarrative);
 router.post('/', createNarrative);
 
 //DELETE a narrative
-router.delete('/:id', (req, res) => {
-    res.json({mssg: 'DELETE a narrative'})
-});
+router.delete('/:id', deleteNarrative);
 
 //UPDATE a narrative
-router.patch('/:id', (req, res) => {
-    res.json({mssg: 'UPDATE a narrative'})
-});
+router.patch('/:id', updateNarrative);
 
 module.exports = router

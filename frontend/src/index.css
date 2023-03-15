@@ -23,3 +23,27 @@ header a {
   max-width: 1400px;
   padding: 20px;
 }
+/*#9 Tutorial for more of styling; some are included here*/
+.home {
+  display: grid;
+  gap: 100px;
+}
+.narrative-details {
+  background:rgb(209, 205, 205);
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px black;
+}
+.narrative-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: rgb(11, 117, 124)
+}
+.narrative-details p {
+  margin: 0;
+}
+.narrative-details span {
+  position: absolute;
+}

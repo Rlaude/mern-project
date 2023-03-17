@@ -8,7 +8,8 @@ const NarrativeForm = () => {
     const [title, setTitle] = useState('');
     const [snippet, setSnippet] = useState('');
     const [body, setBody] = useState('');
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null);
+    const [emptyFields, setEmptyFields] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault() //to prevent default action from page refresh
@@ -26,12 +27,14 @@ const NarrativeForm = () => {
     
         if (!response.ok) {
             setError(json.error) //in the controller, we have the error property
+            setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
             setTitle('') //resetting the form 
             setSnippet('')
             setBody('')
             setError(null) //in case if there was an error previously
+            setEmptyFields([])
             console.log('new narrative added', json)
             dispatch({type: 'CREATE_NARRATIVE', payload: json})
         }
@@ -46,6 +49,7 @@ const NarrativeForm = () => {
                 type="text"
                 onChange={(e) => setTitle(e.target.value)}
                 value={title} 
+                className={emptyFields.includes('title') ? 'error': ''}
             />
 
             <label>Synopsis:</label>
@@ -53,6 +57,7 @@ const NarrativeForm = () => {
                 type="text"
                 onChange={(e) => setSnippet(e.target.value)}
                 value={snippet} 
+                className={emptyFields.includes('snippet') ? 'error': ''}
             />
 
             <label>The Narrative:</label>
@@ -60,6 +65,7 @@ const NarrativeForm = () => {
                 type="text"
                 onChange={(e) => setBody(e.target.value)}
                 value={body} 
+                className={emptyFields.includes('body') ? 'error': ''}
             />
 
             <button>Add Narrative</button>

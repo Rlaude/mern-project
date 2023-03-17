@@ -31,6 +31,21 @@ const getNarrative = async (req, res) => {
 const createNarrative = async (req, res) => {
     const {title, snippet, body} = req.body
 
+    let emptyFields = []
+
+    if (!title) {
+        emptyFields.push('title')
+    }
+    if (!snippet) {
+        emptyFields.push('snippet')
+    }
+    if (!body) {
+        emptyFields.push('body')
+    }
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'Please fill in all the fields', emptyFields})
+    }
+
     // add doc to db
     try {
         const narrative = await Narrative.create({title, snippet, body}) /*Since Narrative.create is asynchronous, we change the handle function above to be asnychronous function, we can then use await */

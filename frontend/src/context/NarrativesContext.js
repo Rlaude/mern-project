@@ -12,6 +12,10 @@ export const narrativesReducer = (state, action) => {
             return {
                 narratives: [action.payload, ...state.narratives]
             }
+        case 'DELETE_NARRATIVE':
+            return {
+                narratives: state.narratives.filter(n => n._id !== action.payload._id)
+            }
         default: 
             return state
     }

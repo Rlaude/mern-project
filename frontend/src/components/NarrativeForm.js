@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useNarrativesContext } from '../hooks/useNarrativesContext'; //to dispatch an action to update our context state, add new narrative to our global context state so it would display without us refreshing(keeping ui in sync with our database)
 
 const NarrativeForm = () => {
+    const { dispatch } = useNarrativesContext() //we destructure the dispatch function from the useNarrativesContext. We then add this dispatch function after we successfully added a document to database.
+
     /* create state for each property */
     const [title, setTitle] = useState('');
     const [snippet, setSnippet] = useState('');
@@ -30,10 +33,11 @@ const NarrativeForm = () => {
             setBody('')
             setError(null) //in case if there was an error previously
             console.log('new narrative added', json)
+            dispatch({type: 'CREATE_NARRATIVE', payload: json})
         }
     }
 
-    return(
+    return (
         <form className='create' onSubmit={handleSubmit}>
             <h3>Add a New Narrative</h3>
 

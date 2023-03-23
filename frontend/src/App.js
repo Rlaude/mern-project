@@ -2,7 +2,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // pages & components
 import Home from './pages/Home';
+import About from './pages/About';
+import Add from './pages/Add';
 import Navbar from './components/Navbar';
+//import NarrativeDetails from './components/NarrativeDetails';
+//import NarrativeList from './components/NarrativeList';
+import NarrativeDetails from './components/NarrativeDetails';
 
 function App() {
   return (
@@ -14,6 +19,18 @@ function App() {
           <Route 
             path="/"
             element={<Home />}
+          />
+          <Route 
+            path="/About"
+            element={<About />}
+          />
+          <Route 
+            path="/Narratives/:id"
+            element={<NarrativeDetails />}
+          />
+          <Route 
+            path="/Add"
+            element={<Add />}
           />
         </Routes>
       </div>

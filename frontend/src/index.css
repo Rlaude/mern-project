@@ -86,3 +86,10 @@ input.error {
   border: 1px solid darksalmon;
   box-shadow: 2px 2px 5px black
 }
+.addButton {
+  background-color: mistyrose;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px;
+  
+}

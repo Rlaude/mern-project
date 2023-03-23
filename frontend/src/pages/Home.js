@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import { useNarrativesContext } from '../hooks/useNarrativesContext';
+import { Link } from 'react-router-dom';
 
 // components
 import NarrativeDetails from '../components/NarrativeDetails';
-import NarrativeForm from '../components/NarrativeForm';
+
 
 const Home = () => {
     const { narratives, dispatch } = useNarrativesContext()
-
+    console.log(narratives)
     useEffect(() => {
         const fetchNarratives = async () => {
             const response = await fetch('/narratives')
@@ -24,11 +25,22 @@ const Home = () => {
     return (
     <div className="home">
         <div className="narratives">
-            {narratives && narratives.map((narrative) => (
-                <NarrativeDetails key={narrative._id} narrative={narrative}/> 
-            ))} 
+            {narratives && narratives.map(narrative => (
+                <div>
+            
+                    
+                    <NarrativeDetails narrative={narrative}/>
+                    
+                    
+                
+                
+                </div>
+                ))}
         </div>   
-        <NarrativeForm />
+        <Link to="/Add">
+        <button className="addButton">New Narrative</button>
+        </Link>
+
     </div>
     )
 };

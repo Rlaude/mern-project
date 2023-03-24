@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Add from './pages/Add';
+import NotFound from './NotFound';
 import Navbar from './components/Navbar';
 //import NarrativeDetails from './components/NarrativeDetails';
 //import NarrativeList from './components/NarrativeList';
@@ -21,16 +22,20 @@ function App() {
             element={<Home />}
           />
           <Route 
-            path="/About"
+            path="/about"
             element={<About />}
           />
           <Route 
-            path="/Narratives/:id"
+            path="/narratives/:id"
             element={<NarrativeDetails />}
           />
           <Route 
-            path="/Add"
+            path="/add"
             element={<Add />}
+          />
+          <Route 
+            path="*"
+            element={<NotFound />}
           />
         </Routes>
       </div>

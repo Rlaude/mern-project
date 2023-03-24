@@ -37,24 +37,25 @@ header a {
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px black;
+  
 }
 .narrative-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
-  color: mistyrose
+  color: mistyrose;
+  
 }
-.narrative-details p {
-  margin: 0;
-}
-.narrative-details span {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+.narrative-preview a {
   cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: black;
+  color: #02091f;
+  text-decoration: none;
+}
+.narrative-preview {
+  background:cadetblue;
+  border-radius: 4px;
+  margin: 10px auto;
+  padding: 10px;
+  position: relative;
 }
 
 /*new narrative form*/

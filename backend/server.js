@@ -6,9 +6,11 @@ const narrativeRoutes = require('./routes/narratives');
 
 // this creates an express app
 const app = express(); /*a function we just invoked*/ 
+const cors = require('cors');
 
 // middleware (middleware: any code that executes between request and sending response)
 app.use(express.json()) //the method is built in express. What it does is it looks if there is any body or data to the request. If it does then it passes and attached it to request object which we can it access in the request handler
+app.use(cors());
 
 app.use((req, res, next) => {
     console.log(req.path, req.method)

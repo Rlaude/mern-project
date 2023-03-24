@@ -3,7 +3,8 @@ import { useNarrativesContext } from '../hooks/useNarrativesContext';
 import { Link } from 'react-router-dom';
 
 // components
-import NarrativeDetails from '../components/NarrativeDetails';
+//import NarrativeDetails from '../components/NarrativeDetails';
+import NarrativeList from '../components/NarrativeList';
 
 
 const Home = () => {
@@ -23,23 +24,15 @@ const Home = () => {
     }, [dispatch])
 
     return (
-    <div className="home">
-        <div className="narratives">
-            {narratives && narratives.map(narrative => (
-                <div>
-            
-                    
-                    <NarrativeDetails narrative={narrative}/>
-                    
-                    
+        <div className="home">
+            <div>
+                {narratives && <NarrativeList narratives={narratives}/>}
                 
-                
-                </div>
-                ))}
-        </div>   
-        <Link to="/Add">
-        <button className="addButton">New Narrative</button>
-        </Link>
+          
+            </div>   
+                <Link to="/add">
+                <button className="addButton">New Narrative</button>
+                </Link>
 
     </div>
     )

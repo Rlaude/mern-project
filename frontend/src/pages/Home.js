@@ -25,14 +25,15 @@ const Home = () => {
 
     return (
         <div className="home">
+
             <div>
+                <Link to="/add">
+                <button className="addButton">New Narrative</button>
+                </Link>
                 {narratives && <NarrativeList narratives={narratives}/>}
                 
           
             </div>   
-                <Link to="/add">
-                <button className="addButton">New Narrative</button>
-                </Link>
 
     </div>
     )

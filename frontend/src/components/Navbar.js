@@ -9,10 +9,7 @@ const Navbar = () => {
                     <h1>Creative Narratives</h1>
                 </Link>
                 <Link to="/about">
-                    <h2>About Us</h2>
-                </Link>
-                <Link to="/add">
-                    <h2>New Narrative</h2>
+                    <h1>About Us</h1>
                 </Link>
             </div>
         </header>

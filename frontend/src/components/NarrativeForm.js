@@ -61,13 +61,15 @@ const NarrativeForm = () => {
             />
 
             <label>The Narrative:</label>
-            <input 
+            <textarea 
+                cols="100" 
+                rows="30"
                 type="text"
                 onChange={(e) => setBody(e.target.value)}
                 value={body} 
                 className={emptyFields.includes('body') ? 'error': ''}
             />
-
+            <br />
             <button>Add Narrative</button>
             {error && <div className="error">{error}</div>}
         </form>

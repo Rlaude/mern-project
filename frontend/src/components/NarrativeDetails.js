@@ -1,6 +1,7 @@
 import { useNarrativesContext } from '../hooks/useNarrativesContext';
 import { useParams } from "react-router-dom";
 import useFetch from "../useFetch";
+import { useNavigate } from 'react-router-dom';
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
@@ -12,7 +13,7 @@ const NarrativeDetails = () => {
     const { id } = useParams();
     //console.log(id)
     const { data: narrative, error, isPending } = useFetch('http://localhost:4000/narratives/' + id);
-    // const history = useNavigate();
+    const navigate = useNavigate();
 
     
     const handleClick = async () => {
@@ -23,6 +24,7 @@ const NarrativeDetails = () => {
 
         if (response.ok) {
             dispatch({type: 'DELETE_NARRATIVE', payload: json})
+            navigate('/');
         }
         
     }

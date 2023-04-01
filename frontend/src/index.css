@@ -14,49 +14,56 @@ header .container {
   padding: 10px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  
 }
 /* any anchor tag inside the header. A link (react router dom) becomes an anchor tag*/
 header a {
   color: steelblue;
   text-decoration: none;
+  
 }
 .pages {
-  max-width: 1400px;
   padding: 20px;
 }
 /*#9 Tutorial for more of styling; some are included here*/
-.home {
-  display: grid;
-  gap: 100px;
-}
+
 .narrative-details {
-  background:cadetblue;
+  background:rgb(170, 234, 236);
   border-radius: 4px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px black;
+  
 }
 .narrative-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
-  color: mistyrose
+  color: mistyrose;
+  
 }
-.narrative-details p {
-  margin: 0;
-}
-.narrative-details span {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+.narrative-preview a {
   cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: black;
+  color: #02091f;
+  text-decoration: none;
 }
-
+.narrative-preview {
+  background-color: rgb(151, 218, 201);
+  box-shadow: 5px 5px 5px black;
+  width: 30%;
+  border-radius: 20px;
+  margin: 10px auto;
+  padding: 10px;
+  text-align-last: center;
+  
+}
+.narrative-list {
+  display: flex;
+  height: 300px;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
 /*new narrative form*/
 label, input {
   display: block;
@@ -85,4 +92,14 @@ div.error {
 input.error {
   border: 1px solid darksalmon;
   box-shadow: 2px 2px 5px black
+}
+.addButton {
+  background-color: mistyrose;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px;
+  font-size: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  position: center;
+  margin: 20px;
 }
